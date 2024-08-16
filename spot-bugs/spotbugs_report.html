@@ -1,0 +1,3599 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="UTF-8"/>
+      <title>SpotBugs Report</title>
+      <style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+
+		.tablerow0:hover, .tablerow1:hover {
+			background: #aaffaa;
+		}
+
+		.priority-1 {
+				color: red;
+				font-weight: bold;
+		}
+		.priority-2 {
+				color: orange;
+				font-weight: bold;
+		}
+		.priority-3 {
+				color: green;
+				font-weight: bold;
+		}
+		.priority-4 {
+				color: blue;
+				font-weight: bold;
+		}
+		</style>
+      <script type="text/javascript">
+			function toggleRow(elid) {
+				if (document.getElementById) {
+					element = document.getElementById(elid);
+					if (element) {
+						if (element.style.display == 'none') {
+							element.style.display = 'block';
+							//window.status = 'Toggle on!';
+						} else {
+							element.style.display = 'none';
+							//window.status = 'Toggle off!';
+						}
+					}
+				}
+			}
+		</script>
+   </head>
+   <body>
+      <h1>
+         <a href="https://spotbugs.github.io/">SpotBugs</a> Report</h1>
+      <h2>Project Information</h2>
+      <p>Project: 
+		</p>
+      <p>SpotBugs version: 4.7.3</p>
+      <p>Code analyzed:</p>
+      <ul>
+         <li>./bin</li>
+      </ul>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>Metrics</h2>
+      <p>4158 lines of code analyzed,
+	in 92 classes, 
+	in 9 packages.</p>
+      <table width="500" cellpadding="5" cellspacing="2">
+         <tr class="tableheader">
+            <th align="left">Metric</th>
+            <th align="right">Total</th>
+            <th align="right">Density*</th>
+         </tr>
+         <tr class="tablerow0">
+            <td>High Priority Warnings</td>
+            <td align="right">34</td>
+            <td align="right">8.18</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>Medium Priority Warnings</td>
+            <td align="right">134</td>
+            <td align="right">32.23</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>Low Priority Warnings</td>
+            <td align="right">52</td>
+            <td align="right">12.51</td>
+         </tr>
+         <tr class="$totalClass">
+            <td>
+               <b>Total Warnings</b>
+            </td>
+            <td align="right">
+               <b>220</b>
+            </td>
+            <td align="right">
+               <b>52.91</b>
+            </td>
+         </tr>
+      </table>
+      <p>
+         <i>(* Defects per Thousand lines of non-commenting source statements)</i>
+      </p>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>Contents</h2>
+      <ul>
+         <li>
+            <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_I18N">Internationalization Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+         </li>
+         <li>
+            <a href="#Details">Details</a>
+         </li>
+      </ul>
+      <h1>Summary</h1>
+      <table width="500" cellpadding="5" cellspacing="2">
+         <tr class="tableheader">
+            <th align="left">Warning Type</th>
+            <th align="right">Number</th>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+            </td>
+            <td align="right">4</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+            </td>
+            <td align="right">8</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_I18N">Internationalization Warnings</a>
+            </td>
+            <td align="right">9</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+            </td>
+            <td align="right">82</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+            </td>
+            <td align="right">8</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+            </td>
+            <td align="right">15</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            </td>
+            <td align="right">94</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <b>Total</b>
+            </td>
+            <td align="right">
+               <b>220</b>
+            </td>
+         </tr>
+      </table>
+      <h1>Warnings</h1>
+      <p>Click on a warning row to see full context information.</p>
+      <h2>
+         <a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2772');">
+            <td>
+               <span class="priority-2">Dm</span>
+            </td>
+            <td>view.Menu$4.actionPerformed(ActionEvent) invokes System.exit(...), which shuts down the entire virtual machine</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2772" style="display: none;">
+                  <a href="#DM_EXIT">Bug type DM_EXIT (click for details)</a>
+                  <br/>In class view.Menu$4<br/>In method view.Menu$4.actionPerformed(ActionEvent)<br/>At Menu.java:[line 108]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e463');">
+            <td>
+               <span class="priority-3">OS</span>
+            </td>
+            <td>model.BazaPredmeta.initPredmete() may fail to close stream on exception</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e463" style="display: none;">
+                  <a href="#OS_OPEN_STREAM_EXCEPTION_PATH">Bug type OS_OPEN_STREAM_EXCEPTION_PATH (click for details)</a>
+                  <br/>In class model.BazaPredmeta<br/>In method model.BazaPredmeta.initPredmete()<br/>Need to close java.io.Reader <br/>At BazaPredmeta.java:[line 56]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e669');">
+            <td>
+               <span class="priority-3">OS</span>
+            </td>
+            <td>model.BazaProfesori.initProfesor() may fail to close stream on exception</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e669" style="display: none;">
+                  <a href="#OS_OPEN_STREAM_EXCEPTION_PATH">Bug type OS_OPEN_STREAM_EXCEPTION_PATH (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.initProfesor()<br/>Need to close java.io.Reader <br/>At BazaProfesori.java:[line 60]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e904');">
+            <td>
+               <span class="priority-3">OS</span>
+            </td>
+            <td>model.BazaStudenata.initStudente() may fail to close stream on exception</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e904" style="display: none;">
+                  <a href="#OS_OPEN_STREAM_EXCEPTION_PATH">Bug type OS_OPEN_STREAM_EXCEPTION_PATH (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.initStudente()<br/>Need to close java.io.Reader <br/>At BazaStudenata.java:[line 61]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_CORRECTNESS">Correctness Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e536');">
+            <td>
+               <span class="priority-1">EC</span>
+            </td>
+            <td>Call to java.time.LocalDate.equals(String) in model.BazaProfesori.searchProfesori(String)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e536" style="display: none;">
+                  <a href="#EC_UNRELATED_TYPES">Bug type EC_UNRELATED_TYPES (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.searchProfesori(String)<br/>Actual type String<br/>Expected java.time.LocalDate<br/>Return value of java.util.HashMap.get(Object) of type Object<br/>Return value of model.Osoba.getDatumRodjenja() of type java.time.LocalDate<br/>java.time.LocalDate.equals(Object) used to determine equality<br/>At BazaProfesori.java:[line 336]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e713');">
+            <td>
+               <span class="priority-1">EC</span>
+            </td>
+            <td>Call to java.time.LocalDate.equals(String) in model.BazaStudenata.searchStudenti(String)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e713" style="display: none;">
+                  <a href="#EC_UNRELATED_TYPES">Bug type EC_UNRELATED_TYPES (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.searchStudenti(String)<br/>Actual type String<br/>Expected java.time.LocalDate<br/>Return value of java.util.HashMap.get(Object) of type Object<br/>Return value of model.Osoba.getDatumRodjenja() of type java.time.LocalDate<br/>java.time.LocalDate.equals(Object) used to determine equality<br/>At BazaStudenata.java:[line 299]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e742');">
+            <td>
+               <span class="priority-1">EC</span>
+            </td>
+            <td>Call to java.time.LocalDate.equals(String) in model.BazaStudenata.searchStudenti(String)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e742" style="display: none;">
+                  <a href="#EC_UNRELATED_TYPES">Bug type EC_UNRELATED_TYPES (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.searchStudenti(String)<br/>Actual type String<br/>Expected java.time.LocalDate<br/>Return value of java.util.HashMap.get(Object) of type Object<br/>Return value of model.Student.getDatumUpisa() of type java.time.LocalDate<br/>java.time.LocalDate.equals(Object) used to determine equality<br/>At BazaStudenata.java:[line 319]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e771');">
+            <td>
+               <span class="priority-1">EC</span>
+            </td>
+            <td>Call to model.StatusStudent.equals(String) in model.BazaStudenata.searchStudenti(String)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e771" style="display: none;">
+                  <a href="#EC_UNRELATED_TYPES">Bug type EC_UNRELATED_TYPES (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.searchStudenti(String)<br/>Actual type String<br/>Expected model.StatusStudent<br/>Return value of java.util.HashMap.get(Object) of type Object<br/>Return value of model.Student.getStatus() of type model.StatusStudent<br/>Enum.equals(Object) used to determine equality<br/>At BazaStudenata.java:[line 327]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e438');">
+            <td>
+               <span class="priority-2">NP</span>
+            </td>
+            <td>Possible null pointer dereference of in in model.BazaPredmeta.initPredmete() on exception path</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e438" style="display: none;">
+                  <a href="#NP_NULL_ON_SOME_PATH_EXCEPTION">Bug type NP_NULL_ON_SOME_PATH_EXCEPTION (click for details)</a>
+                  <br/>In class model.BazaPredmeta<br/>In method model.BazaPredmeta.initPredmete()<br/>Value loaded from in<br/>Dereferenced at BazaPredmeta.java:[line 62]<br/>Null value at BazaPredmeta.java:[line 53]<br/>Known null at BazaPredmeta.java:[line 57]<br/>Known null at BazaPredmeta.java:[line 58]<br/>Known null at BazaPredmeta.java:[line 59]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e647');">
+            <td>
+               <span class="priority-2">NP</span>
+            </td>
+            <td>Possible null pointer dereference of in in model.BazaProfesori.initProfesor() on exception path</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e647" style="display: none;">
+                  <a href="#NP_NULL_ON_SOME_PATH_EXCEPTION">Bug type NP_NULL_ON_SOME_PATH_EXCEPTION (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.initProfesor()<br/>Value loaded from in<br/>Dereferenced at BazaProfesori.java:[line 66]<br/>Null value at BazaProfesori.java:[line 57]<br/>Known null at BazaProfesori.java:[line 61]<br/>Known null at BazaProfesori.java:[line 63]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e882');">
+            <td>
+               <span class="priority-2">NP</span>
+            </td>
+            <td>Possible null pointer dereference of in in model.BazaStudenata.initStudente() on exception path</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e882" style="display: none;">
+                  <a href="#NP_NULL_ON_SOME_PATH_EXCEPTION">Bug type NP_NULL_ON_SOME_PATH_EXCEPTION (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.initStudente()<br/>Value loaded from in<br/>Dereferenced at BazaStudenata.java:[line 67]<br/>Null value at BazaStudenata.java:[line 59]<br/>Known null at BazaStudenata.java:[line 62]<br/>Known null at BazaStudenata.java:[line 64]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2582');">
+            <td>
+               <span class="priority-2">UwF</span>
+            </td>
+            <td>Unwritten field: view.EditSubjFrame.proff</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2582" style="display: none;">
+                  <a href="#UWF_UNWRITTEN_FIELD">Bug type UWF_UNWRITTEN_FIELD (click for details)</a>
+                  <br/>In class view.EditSubjFrame<br/>Field view.EditSubjFrame.proff<br/>At EditSubjFrame.java:[line 49]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_I18N">Internationalization Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e4');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in controller.DataController.saveDataProf(ArrayList): new java.io.FileWriter(String)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e4" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class controller.DataController<br/>In method controller.DataController.saveDataProf(ArrayList)<br/>Called method new java.io.FileWriter(String)<br/>At DataController.java:[line 70]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e19');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in controller.DataController.saveDataProf(ArrayList): new java.io.FileWriter(String, boolean)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e19" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class controller.DataController<br/>In method controller.DataController.saveDataProf(ArrayList)<br/>Called method new java.io.FileWriter(String, boolean)<br/>At DataController.java:[line 69]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e34');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in controller.DataController.saveDataStud(ArrayList): new java.io.FileWriter(String)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e34" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class controller.DataController<br/>In method controller.DataController.saveDataStud(ArrayList)<br/>Called method new java.io.FileWriter(String)<br/>At DataController.java:[line 116]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e49');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in controller.DataController.saveDataStud(ArrayList): new java.io.FileWriter(String, boolean)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e49" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class controller.DataController<br/>In method controller.DataController.saveDataStud(ArrayList)<br/>Called method new java.io.FileWriter(String, boolean)<br/>At DataController.java:[line 115]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e64');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in controller.DataController.saveDataSubj(ArrayList): new java.io.FileWriter(String)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e64" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class controller.DataController<br/>In method controller.DataController.saveDataSubj(ArrayList)<br/>Called method new java.io.FileWriter(String)<br/>At DataController.java:[line 32]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e79');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in controller.DataController.saveDataSubj(ArrayList): new java.io.FileWriter(String, boolean)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e79" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class controller.DataController<br/>In method controller.DataController.saveDataSubj(ArrayList)<br/>Called method new java.io.FileWriter(String, boolean)<br/>At DataController.java:[line 31]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e344');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in model.BazaPredmeta.initPredmete(): new java.io.InputStreamReader(InputStream)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e344" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class model.BazaPredmeta<br/>In method model.BazaPredmeta.initPredmete()<br/>Called method new java.io.InputStreamReader(InputStream)<br/>At BazaPredmeta.java:[line 56]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e521');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in model.BazaProfesori.initProfesor(): new java.io.InputStreamReader(InputStream)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e521" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.initProfesor()<br/>Called method new java.io.InputStreamReader(InputStream)<br/>At BazaProfesori.java:[line 60]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e697');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in model.BazaStudenata.initStudente(): new java.io.InputStreamReader(InputStream)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e697" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.initStudente()<br/>Called method new java.io.InputStreamReader(InputStream)<br/>At BazaStudenata.java:[line 61]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e359');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>model.BazaPredmeta.getPredmeti() may expose internal representation by returning BazaPredmeta.predmeti</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e359" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.BazaPredmeta<br/>In method model.BazaPredmeta.getPredmeti()<br/>Field model.BazaPredmeta.predmeti<br/>At BazaPredmeta.java:[line 104]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e375');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>model.BazaPredmeta.getSviPredmeti() may expose internal representation by returning BazaPredmeta.sviPredmeti</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e375" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.BazaPredmeta<br/>In method model.BazaPredmeta.getSviPredmeti()<br/>Field model.BazaPredmeta.sviPredmeti<br/>At BazaPredmeta.java:[line 100]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e565');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>model.BazaProfesori.getProfesori() may expose internal representation by returning BazaProfesori.profesori</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e565" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.getProfesori()<br/>Field model.BazaProfesori.profesori<br/>At BazaProfesori.java:[line 109]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e581');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>model.BazaProfesori.getSviProfesori() may expose internal representation by returning BazaProfesori.sviProfesori</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e581" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.getSviProfesori()<br/>Field model.BazaProfesori.sviProfesori<br/>At BazaProfesori.java:[line 113]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e800');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>model.BazaStudenata.getStudenti() may expose internal representation by returning BazaStudenata.studenti</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e800" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.getStudenti()<br/>Field model.BazaStudenata.studenti<br/>At BazaStudenata.java:[line 103]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e816');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>model.BazaStudenata.getSviStudenti() may expose internal representation by returning BazaStudenata.sviStudenti</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e816" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.getSviStudenti()<br/>Field model.BazaStudenata.sviStudenti<br/>At BazaStudenata.java:[line 107]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e933');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>model.Predmet.getBrIndeksaStudenata() may expose internal representation by returning Predmet.brIndeksaStudenata</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e933" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.Predmet<br/>In method model.Predmet.getBrIndeksaStudenata()<br/>Field model.Predmet.brIndeksaStudenata<br/>At Predmet.java:[line 75]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e985');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>model.Profesor.getPredmeti() may expose internal representation by returning Profesor.predmeti</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e985" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.Profesor<br/>In method model.Profesor.getPredmeti()<br/>Field model.Profesor.predmeti<br/>At Profesor.java:[line 43]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1037');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>model.Student.getPredmeti() may expose internal representation by returning Student.predmeti</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1037" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.Student<br/>In method model.Student.getPredmeti()<br/>Field model.Student.predmeti<br/>At Student.java:[line 159]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3328');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>view.TabbedPane.getTabelatudenti() may expose internal representation by returning TabbedPane.tabelaStudenti</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3328" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>In method view.TabbedPane.getTabelatudenti()<br/>Field view.TabbedPane.tabelaStudenti<br/>At TabbedPane.java:[line 82]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e391');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>model.BazaPredmeta.setPredmeti(ArrayList) may expose internal representation by storing an externally mutable object into BazaPredmeta.predmeti</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e391" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class model.BazaPredmeta<br/>In method model.BazaPredmeta.setPredmeti(ArrayList)<br/>Field model.BazaPredmeta.predmeti<br/>Local variable named predmeti<br/>At BazaPredmeta.java:[line 108]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e597');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>model.BazaProfesori.setProfesori(ArrayList) may expose internal representation by storing an externally mutable object into BazaProfesori.profesori</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e597" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.setProfesori(ArrayList)<br/>Field model.BazaProfesori.profesori<br/>Local variable named profesori<br/>At BazaProfesori.java:[line 117]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e832');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>model.BazaStudenata.setStudenti(ArrayList) may expose internal representation by storing an externally mutable object into BazaStudenata.studenti</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e832" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.setStudenti(ArrayList)<br/>Field model.BazaStudenata.studenti<br/>Local variable named studenti<br/>At BazaStudenata.java:[line 111]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e949');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>new model.Predmet(String, String, String, String, String, ArrayList) may expose internal representation by storing an externally mutable object into Predmet.brIndeksaStudenata</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e949" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class model.Predmet<br/>In method new model.Predmet(String, String, String, String, String, ArrayList)<br/>Field model.Predmet.brIndeksaStudenata<br/>Local variable named studenti<br/>At Predmet.java:[line 60]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e967');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>model.Predmet.setBrIndeksaStudenata(ArrayList) may expose internal representation by storing an externally mutable object into Predmet.brIndeksaStudenata</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e967" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class model.Predmet<br/>In method model.Predmet.setBrIndeksaStudenata(ArrayList)<br/>Field model.Predmet.brIndeksaStudenata<br/>Local variable named brIndeksaStudenata<br/>At Predmet.java:[line 79]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1001');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>new model.Profesor(String, String, LocalDate, String, String, String, String, String, String, String, ArrayList) may expose internal representation by storing an externally mutable object into Profesor.predmeti</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1001" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class model.Profesor<br/>In method new model.Profesor(String, String, LocalDate, String, String, String, String, String, String, String, ArrayList)<br/>Field model.Profesor.predmeti<br/>Local variable named predmeti<br/>At Profesor.java:[line 22]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1019');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>model.Profesor.setPredmeti(ArrayList) may expose internal representation by storing an externally mutable object into Profesor.predmeti</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1019" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class model.Profesor<br/>In method model.Profesor.setPredmeti(ArrayList)<br/>Field model.Profesor.predmeti<br/>Local variable named predmeti<br/>At Profesor.java:[line 46]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1053');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>new model.Student(String, String, LocalDate, String, String, String, String, LocalDate, int, StatusStudent, double, ArrayList) may expose internal representation by storing an externally mutable object into Student.predmeti</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1053" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class model.Student<br/>In method new model.Student(String, String, LocalDate, String, String, String, String, LocalDate, int, StatusStudent, double, ArrayList)<br/>Field model.Student.predmeti<br/>Local variable named p<br/>At Student.java:[line 42]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1071');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>model.Student.setPredmeti(ArrayList) may expose internal representation by storing an externally mutable object into Student.predmeti</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1071" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class model.Student<br/>In method model.Student.setPredmeti(ArrayList)<br/>Field model.Student.predmeti<br/>Local variable named predmeti<br/>At Student.java:[line 162]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1706');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>new view.ButtonPredmeti(JTable, int) may expose internal representation by storing an externally mutable object into ButtonPredmeti.table</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1706" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class view.ButtonPredmeti<br/>In method new view.ButtonPredmeti(JTable, int)<br/>Field view.ButtonPredmeti.table<br/>Local variable named t<br/>At ButtonPredmeti.java:[line 21]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1784');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>new view.ButtonPredmetiProfesora(JTable, int) may expose internal representation by storing an externally mutable object into ButtonPredmetiProfesora.table</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1784" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class view.ButtonPredmetiProfesora<br/>In method new view.ButtonPredmetiProfesora(JTable, int)<br/>Field view.ButtonPredmetiProfesora.table<br/>Local variable named t<br/>At ButtonPredmetiProfesora.java:[line 24]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1861');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>new view.ButtonStudenti(JTable, int) may expose internal representation by storing an externally mutable object into ButtonStudenti.table</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1861" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class view.ButtonStudenti<br/>In method new view.ButtonStudenti(JTable, int)<br/>Field view.ButtonStudenti.table<br/>Local variable named t<br/>At ButtonStudenti.java:[line 28]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1921');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>new view.Clock(JLabel) may expose internal representation by storing an externally mutable object into Clock.l</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1921" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class view.Clock<br/>In method new view.Clock(JLabel)<br/>Field view.Clock.l<br/>Local variable named l<br/>At Clock.java:[line 11]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1724');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method addMouseListener is called from constructor new view.ButtonPredmeti(JTable, int).</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1724" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ButtonPredmeti<br/>In method new view.ButtonPredmeti(JTable, int)<br/>Value addMouseListener<br/>At ButtonPredmeti.java:[line 24]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1738');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method setCellEditor is called from constructor new view.ButtonPredmeti(JTable, int).</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1738" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ButtonPredmeti<br/>In method new view.ButtonPredmeti(JTable, int)<br/>Value setCellEditor<br/>At ButtonPredmeti.java:[line 23]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1752');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method setCellRenderer is called from constructor new view.ButtonPredmeti(JTable, int).</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1752" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ButtonPredmeti<br/>In method new view.ButtonPredmeti(JTable, int)<br/>Value setCellRenderer<br/>At ButtonPredmeti.java:[line 22]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1802');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method addMouseListener is called from constructor new view.ButtonPredmetiProfesora(JTable, int).</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1802" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ButtonPredmetiProfesora<br/>In method new view.ButtonPredmetiProfesora(JTable, int)<br/>Value addMouseListener<br/>At ButtonPredmetiProfesora.java:[line 27]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1816');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method setCellEditor is called from constructor new view.ButtonPredmetiProfesora(JTable, int).</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1816" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ButtonPredmetiProfesora<br/>In method new view.ButtonPredmetiProfesora(JTable, int)<br/>Value setCellEditor<br/>At ButtonPredmetiProfesora.java:[line 26]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1830');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method setCellRenderer is called from constructor new view.ButtonPredmetiProfesora(JTable, int).</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1830" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ButtonPredmetiProfesora<br/>In method new view.ButtonPredmetiProfesora(JTable, int)<br/>Value setCellRenderer<br/>At ButtonPredmetiProfesora.java:[line 25]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1879');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method addMouseListener is called from constructor new view.ButtonStudenti(JTable, int).</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1879" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ButtonStudenti<br/>In method new view.ButtonStudenti(JTable, int)<br/>Value addMouseListener<br/>At ButtonStudenti.java:[line 31]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1893');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method setCellEditor is called from constructor new view.ButtonStudenti(JTable, int).</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1893" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ButtonStudenti<br/>In method new view.ButtonStudenti(JTable, int)<br/>Value setCellEditor<br/>At ButtonStudenti.java:[line 30]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1907');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method setCellRenderer is called from constructor new view.ButtonStudenti(JTable, int).</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1907" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ButtonStudenti<br/>In method new view.ButtonStudenti(JTable, int)<br/>Value setCellRenderer<br/>At ButtonStudenti.java:[line 29]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1939');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method start is called from constructor new view.Clock(JLabel).</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1939" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.Clock<br/>In method new view.Clock(JLabel)<br/>Value start<br/>At Clock.java:[line 12]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2785');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method getModel is called from constructor new view.PredmetiJTable().</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2785" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.PredmetiJTable<br/>In method new view.PredmetiJTable()<br/>Value getModel<br/>At PredmetiJTable.java:[line 36]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2799');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method sort is called from constructor new view.PredmetiJTable().</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2799" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.PredmetiJTable<br/>In method new view.PredmetiJTable()<br/>Value sort<br/>At PredmetiJTable.java:[line 37]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2949');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method getModel is called from constructor new view.ProfesoriJTable().</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2949" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ProfesoriJTable<br/>In method new view.ProfesoriJTable()<br/>Value getModel<br/>At ProfesoriJTable.java:[line 43]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2963');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method sort is called from constructor new view.ProfesoriJTable().</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2963" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.ProfesoriJTable<br/>In method new view.ProfesoriJTable()<br/>Value sort<br/>At ProfesoriJTable.java:[line 44]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3113');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method getModel is called from constructor new view.StudentiJTable().</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3113" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.StudentiJTable<br/>In method new view.StudentiJTable()<br/>Value getModel<br/>At StudentiJTable.java:[line 45]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3127');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method sort is called from constructor new view.StudentiJTable().</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3127" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.StudentiJTable<br/>In method new view.StudentiJTable()<br/>Value sort<br/>At StudentiJTable.java:[line 46]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3344');">
+            <td>
+               <span class="priority-3">MC</span>
+            </td>
+            <td>Overridable method getSelectedIndex is called from constructor new view.TabbedPane().</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3344" style="display: none;">
+                  <a href="#MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">Bug type MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>In method new view.TabbedPane()<br/>Value getSelectedIndex<br/>At TabbedPane.java:[line 50]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e126');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Public static controller.PredmetController.getInstance() may expose internal representation by returning PredmetController.instance</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e126" style="display: none;">
+                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                  <br/>In class controller.PredmetController<br/>In method controller.PredmetController.getInstance()<br/>Field controller.PredmetController.instance<br/>At PredmetController.java:[line 23]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e159');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Public static controller.ProfesorController.getInstance() may expose internal representation by returning ProfesorController.instance</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e159" style="display: none;">
+                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                  <br/>In class controller.ProfesorController<br/>In method controller.ProfesorController.getInstance()<br/>Field controller.ProfesorController.instance<br/>At ProfesorController.java:[line 22]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e191');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Public static controller.StudentiController.getInstance() may expose internal representation by returning StudentiController.instance</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e191" style="display: none;">
+                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                  <br/>In class controller.StudentiController<br/>In method controller.StudentiController.getInstance()<br/>Field controller.StudentiController.instance<br/>At StudentiController.java:[line 21]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e425');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>model.BazaPredmeta.instance should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e425" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class model.BazaPredmeta<br/>Field model.BazaPredmeta.instance<br/>At BazaPredmeta.java:[line 19]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e631');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Public static model.BazaProfesori.getInstance() may expose internal representation by returning BazaProfesori.instance</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e631" style="display: none;">
+                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.getInstance()<br/>Field model.BazaProfesori.instance<br/>At BazaProfesori.java:[line 23]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e866');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Public static model.BazaStudenata.getInstance() may expose internal representation by returning BazaStudenata.instance</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e866" style="display: none;">
+                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.getInstance()<br/>Field model.BazaStudenata.instance<br/>At BazaStudenata.java:[line 23]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1089');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddProfFrame.adresaTF should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1089" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>Field view.AddProfFrame.adresaTF<br/>In AddProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1102');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddProfFrame.blkTF should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1102" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>Field view.AddProfFrame.blkTF<br/>In AddProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1116');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddProfFrame.datumTF should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1116" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>Field view.AddProfFrame.datumTF<br/>In AddProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1129');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddProfFrame.emailTF should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1129" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>Field view.AddProfFrame.emailTF<br/>In AddProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1142');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddProfFrame.imeTF should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1142" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>Field view.AddProfFrame.imeTF<br/>In AddProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1155');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddProfFrame.kancelarijaTF should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1155" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>Field view.AddProfFrame.kancelarijaTF<br/>In AddProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1168');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddProfFrame.prezimeTF should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1168" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>Field view.AddProfFrame.prezimeTF<br/>In AddProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1181');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddProfFrame.telefonTF should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1181" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>Field view.AddProfFrame.telefonTF<br/>In AddProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1194');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddProfFrame.titula should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1194" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>Field view.AddProfFrame.titula<br/>In AddProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1207');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddProfFrame.zvanje should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1207" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>Field view.AddProfFrame.zvanje<br/>In AddProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1453');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.AddStudentFrame.potvrda should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1453" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>Field view.AddStudentFrame.potvrda<br/>In AddStudentFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1969');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.EditProfFrame.adresaTF should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1969" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>Field view.EditProfFrame.adresaTF<br/>In EditProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1982');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.EditProfFrame.blkTF should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1982" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>Field view.EditProfFrame.blkTF<br/>In EditProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1995');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.EditProfFrame.datumTF should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1995" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>Field view.EditProfFrame.datumTF<br/>In EditProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2008');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.EditProfFrame.emailTF should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2008" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>Field view.EditProfFrame.emailTF<br/>In EditProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2021');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.EditProfFrame.imeTF should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2021" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>Field view.EditProfFrame.imeTF<br/>In EditProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2034');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.EditProfFrame.kancelarijaTF should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2034" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>Field view.EditProfFrame.kancelarijaTF<br/>In EditProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2047');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.EditProfFrame.prezimeTF should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2047" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>Field view.EditProfFrame.prezimeTF<br/>In EditProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2060');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.EditProfFrame.telefonTF should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2060" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>Field view.EditProfFrame.telefonTF<br/>In EditProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2073');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.EditProfFrame.titula should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2073" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>Field view.EditProfFrame.titula<br/>In EditProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2086');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.EditProfFrame.zvanje should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2086" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>Field view.EditProfFrame.zvanje<br/>In EditProfFrame.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2813');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Public static view.PredmetiJTable.getInstance() may expose internal representation by returning PredmetiJTable.instance</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2813" style="display: none;">
+                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                  <br/>In class view.PredmetiJTable<br/>In method view.PredmetiJTable.getInstance()<br/>Field view.PredmetiJTable.instance<br/>At PredmetiJTable.java:[line 24]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2829');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.PredmetiJTable.model should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2829" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.PredmetiJTable<br/>Field view.PredmetiJTable.model<br/>In PredmetiJTable.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2842');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.PredmetiJTable.selektovanRed should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2842" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.PredmetiJTable<br/>Field view.PredmetiJTable.selektovanRed<br/>In PredmetiJTable.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2855');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.PredmetiJTable.tabela should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2855" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.PredmetiJTable<br/>Field view.PredmetiJTable.tabela<br/>At PredmetiJTable.java:[line 18]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2977');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Public static view.ProfesoriJTable.getInstance() may expose internal representation by returning ProfesoriJTable.instance</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2977" style="display: none;">
+                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                  <br/>In class view.ProfesoriJTable<br/>In method view.ProfesoriJTable.getInstance()<br/>Field view.ProfesoriJTable.instance<br/>At ProfesoriJTable.java:[line 30]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2993');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.ProfesoriJTable.model should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2993" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.ProfesoriJTable<br/>Field view.ProfesoriJTable.model<br/>In ProfesoriJTable.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3006');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.ProfesoriJTable.selektovanRed should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3006" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.ProfesoriJTable<br/>Field view.ProfesoriJTable.selektovanRed<br/>In ProfesoriJTable.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3019');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.ProfesoriJTable.tabela should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3019" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.ProfesoriJTable<br/>Field view.ProfesoriJTable.tabela<br/>At ProfesoriJTable.java:[line 24]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3141');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Public static view.StudentiJTable.getInstance() may expose internal representation by returning StudentiJTable.instance</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3141" style="display: none;">
+                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                  <br/>In class view.StudentiJTable<br/>In method view.StudentiJTable.getInstance()<br/>Field view.StudentiJTable.instance<br/>At StudentiJTable.java:[line 35]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3157');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.StudentiJTable.model should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3157" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.StudentiJTable<br/>Field view.StudentiJTable.model<br/>In StudentiJTable.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3170');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.StudentiJTable.selektovanRed should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3170" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.StudentiJTable<br/>Field view.StudentiJTable.selektovanRed<br/>In StudentiJTable.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3183');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.StudentiJTable.tabela should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3183" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class view.StudentiJTable<br/>Field view.StudentiJTable.tabela<br/>At StudentiJTable.java:[line 30]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3358');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Public static view.TabbedPane.getInstance() may expose internal representation by returning TabbedPane.instance</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3358" style="display: none;">
+                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>In method view.TabbedPane.getInstance()<br/>Field view.TabbedPane.instance<br/>At TabbedPane.java:[line 33]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3374');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>view.TabbedPane.stanje isn't final but should be</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3374" style="display: none;">
+                  <a href="#MS_SHOULD_BE_FINAL">Bug type MS_SHOULD_BE_FINAL (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>Field view.TabbedPane.stanje<br/>In TabbedPane.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3449');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Public static view.Toolbar.getInstance() may expose internal representation by returning Toolbar.instance</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3449" style="display: none;">
+                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                  <br/>In class view.Toolbar<br/>In method view.Toolbar.getInstance()<br/>Field view.Toolbar.instance<br/>At Toolbar.java:[line 53]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e94');">
+            <td>
+               <span class="priority-3">LI</span>
+            </td>
+            <td>Incorrect lazy initialization of static field controller.DataController.instance in controller.DataController.getInstance()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e94" style="display: none;">
+                  <a href="#LI_LAZY_INIT_STATIC">Bug type LI_LAZY_INIT_STATIC (click for details)</a>
+                  <br/>In class controller.DataController<br/>In method controller.DataController.getInstance()<br/>On field controller.DataController.instance<br/>At DataController.java:[lines 19-20]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e110');">
+            <td>
+               <span class="priority-3">LI</span>
+            </td>
+            <td>Incorrect lazy initialization of static field controller.PredmetController.instance in controller.PredmetController.getInstance()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e110" style="display: none;">
+                  <a href="#LI_LAZY_INIT_STATIC">Bug type LI_LAZY_INIT_STATIC (click for details)</a>
+                  <br/>In class controller.PredmetController<br/>In method controller.PredmetController.getInstance()<br/>On field controller.PredmetController.instance<br/>At PredmetController.java:[lines 20-21]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e142');">
+            <td>
+               <span class="priority-3">LI</span>
+            </td>
+            <td>Incorrect lazy initialization of static field controller.ProfesorController.instance in controller.ProfesorController.getInstance()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e142" style="display: none;">
+                  <a href="#LI_LAZY_INIT_STATIC">Bug type LI_LAZY_INIT_STATIC (click for details)</a>
+                  <br/>In class controller.ProfesorController<br/>In method controller.ProfesorController.getInstance()<br/>On field controller.ProfesorController.instance<br/>At ProfesorController.java:[lines 19-20]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e175');">
+            <td>
+               <span class="priority-3">LI</span>
+            </td>
+            <td>Incorrect lazy initialization of static field controller.StudentiController.instance in controller.StudentiController.getInstance()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e175" style="display: none;">
+                  <a href="#LI_LAZY_INIT_STATIC">Bug type LI_LAZY_INIT_STATIC (click for details)</a>
+                  <br/>In class controller.StudentiController<br/>In method controller.StudentiController.getInstance()<br/>On field controller.StudentiController.instance<br/>At StudentiController.java:[lines 18-19]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e409');">
+            <td>
+               <span class="priority-3">LI</span>
+            </td>
+            <td>Incorrect lazy initialization of static field model.BazaPredmeta.instance in model.BazaPredmeta.getInstanceBazaPredmeta()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e409" style="display: none;">
+                  <a href="#LI_LAZY_INIT_STATIC">Bug type LI_LAZY_INIT_STATIC (click for details)</a>
+                  <br/>In class model.BazaPredmeta<br/>In method model.BazaPredmeta.getInstanceBazaPredmeta()<br/>On field model.BazaPredmeta.instance<br/>At BazaPredmeta.java:[lines 23-24]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e615');">
+            <td>
+               <span class="priority-3">LI</span>
+            </td>
+            <td>Incorrect lazy initialization of static field model.BazaProfesori.instance in model.BazaProfesori.getInstance()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e615" style="display: none;">
+                  <a href="#LI_LAZY_INIT_STATIC">Bug type LI_LAZY_INIT_STATIC (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.getInstance()<br/>On field model.BazaProfesori.instance<br/>At BazaProfesori.java:[lines 20-21]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e850');">
+            <td>
+               <span class="priority-3">LI</span>
+            </td>
+            <td>Incorrect lazy initialization of static field model.BazaStudenata.instance in model.BazaStudenata.getInstance()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e850" style="display: none;">
+                  <a href="#LI_LAZY_INIT_STATIC">Bug type LI_LAZY_INIT_STATIC (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.getInstance()<br/>On field model.BazaStudenata.instance<br/>At BazaStudenata.java:[lines 20-21]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1954');">
+            <td>
+               <span class="priority-3">SC</span>
+            </td>
+            <td>new view.Clock(JLabel) invokes view.Clock.start()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1954" style="display: none;">
+                  <a href="#SC_START_IN_CTOR">Bug type SC_START_IN_CTOR (click for details)</a>
+                  <br/>In class view.Clock<br/>In method new view.Clock(JLabel)<br/>Called method view.Clock.start()<br/>At Clock.java:[line 12]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_PERFORMANCE">Performance Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2626');">
+            <td>
+               <span class="priority-3">SIC</span>
+            </td>
+            <td>The class view.MainFrame$1 could be refactored into a named _static_ inner class</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2626" style="display: none;">
+                  <a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+                  <br/>Anonymous class view.MainFrame$1<br/>In class view.MainFrame<br/>In method new view.MainFrame()<br/>At MainFrame.java:[line 76]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2642');">
+            <td>
+               <span class="priority-3">SIC</span>
+            </td>
+            <td>The class view.Menu$1 could be refactored into a named _static_ inner class</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2642" style="display: none;">
+                  <a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+                  <br/>Anonymous class view.Menu$1<br/>In class view.Menu<br/>In method new view.Menu()<br/>At Menu.java:[line 62]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2658');">
+            <td>
+               <span class="priority-3">SIC</span>
+            </td>
+            <td>The class view.Menu$2 could be refactored into a named _static_ inner class</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2658" style="display: none;">
+                  <a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+                  <br/>Anonymous class view.Menu$2<br/>In class view.Menu<br/>In method new view.Menu()<br/>At Menu.java:[line 71]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2674');">
+            <td>
+               <span class="priority-3">SIC</span>
+            </td>
+            <td>The class view.Menu$3 could be refactored into a named _static_ inner class</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2674" style="display: none;">
+                  <a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+                  <br/>Anonymous class view.Menu$3<br/>In class view.Menu<br/>In method new view.Menu()<br/>At Menu.java:[line 86]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2690');">
+            <td>
+               <span class="priority-3">SIC</span>
+            </td>
+            <td>The class view.Menu$4 could be refactored into a named _static_ inner class</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2690" style="display: none;">
+                  <a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+                  <br/>Anonymous class view.Menu$4<br/>In class view.Menu<br/>In method new view.Menu()<br/>At Menu.java:[line 104]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2706');">
+            <td>
+               <span class="priority-3">SIC</span>
+            </td>
+            <td>The class view.Menu$5 could be refactored into a named _static_ inner class</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2706" style="display: none;">
+                  <a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+                  <br/>Anonymous class view.Menu$5<br/>In class view.Menu<br/>In method new view.Menu()<br/>At Menu.java:[line 117]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2722');">
+            <td>
+               <span class="priority-3">SIC</span>
+            </td>
+            <td>The class view.Menu$6 could be refactored into a named _static_ inner class</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2722" style="display: none;">
+                  <a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+                  <br/>Anonymous class view.Menu$6<br/>In class view.Menu<br/>In method new view.Menu()<br/>At Menu.java:[line 140]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2868');">
+            <td>
+               <span class="priority-3">SIC</span>
+            </td>
+            <td>The class view.PredmetiJTable$1 could be refactored into a named _static_ inner class</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2868" style="display: none;">
+                  <a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+                  <br/>Anonymous class view.PredmetiJTable$1<br/>In class view.PredmetiJTable<br/>In method new view.PredmetiJTable()<br/>At PredmetiJTable.java:[line 38]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3032');">
+            <td>
+               <span class="priority-3">SIC</span>
+            </td>
+            <td>The class view.ProfesoriJTable$1 could be refactored into a named _static_ inner class</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3032" style="display: none;">
+                  <a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+                  <br/>Anonymous class view.ProfesoriJTable$1<br/>In class view.ProfesoriJTable<br/>In method new view.ProfesoriJTable()<br/>At ProfesoriJTable.java:[line 45]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3196');">
+            <td>
+               <span class="priority-3">SIC</span>
+            </td>
+            <td>The class view.StudentiJTable$1 could be refactored into a named _static_ inner class</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3196" style="display: none;">
+                  <a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+                  <br/>Anonymous class view.StudentiJTable$1<br/>In class view.StudentiJTable<br/>In method new view.StudentiJTable()<br/>At StudentiJTable.java:[line 47]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2595');">
+            <td>
+               <span class="priority-2">UrF</span>
+            </td>
+            <td>Unread field: view.EditSubjFrame$1.blkReg</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2595" style="display: none;">
+                  <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+                  <br/>In class view.EditSubjFrame$1<br/>Field view.EditSubjFrame$1.blkReg<br/>At EditSubjFrame.java:[line 129]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e479');">
+            <td>
+               <span class="priority-2">UuF</span>
+            </td>
+            <td>Unused field: model.BazaPredmeta.studenti</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e479" style="display: none;">
+                  <a href="#UUF_UNUSED_FIELD">Bug type UUF_UNUSED_FIELD (click for details)</a>
+                  <br/>In class model.BazaPredmeta<br/>Field model.BazaPredmeta.studenti<br/>In BazaPredmeta.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e492');">
+            <td>
+               <span class="priority-2">WMI</span>
+            </td>
+            <td>model.BazaPredmeta.searchPredmet(String) makes inefficient use of keySet iterator instead of entrySet iterator</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e492" style="display: none;">
+                  <a href="#WMI_WRONG_MAP_ITERATOR">Bug type WMI_WRONG_MAP_ITERATOR (click for details)</a>
+                  <br/>In class model.BazaPredmeta<br/>In method model.BazaPredmeta.searchPredmet(String)<br/>At BazaPredmeta.java:[line 276]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e685');">
+            <td>
+               <span class="priority-2">WMI</span>
+            </td>
+            <td>model.BazaProfesori.searchProfesori(String) makes inefficient use of keySet iterator instead of entrySet iterator</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e685" style="display: none;">
+                  <a href="#WMI_WRONG_MAP_ITERATOR">Bug type WMI_WRONG_MAP_ITERATOR (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.searchProfesori(String)<br/>At BazaProfesori.java:[line 328]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e920');">
+            <td>
+               <span class="priority-2">WMI</span>
+            </td>
+            <td>model.BazaStudenata.searchStudenti(String) makes inefficient use of keySet iterator instead of entrySet iterator</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e920" style="display: none;">
+                  <a href="#WMI_WRONG_MAP_ITERATOR">Bug type WMI_WRONG_MAP_ITERATOR (click for details)</a>
+                  <br/>In class model.BazaStudenata<br/>In method model.BazaStudenata.searchStudenti(String)<br/>At BazaStudenata.java:[line 291]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_STYLE">Dodgy code Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e207');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to $L2 in controller.listeners.add.AddProfListener.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e207" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class controller.listeners.add.AddProfListener<br/>In method controller.listeners.add.AddProfListener.mouseClicked(MouseEvent)<br/>Local variable stored in JVM register 2<br/>At AddProfListener.java:[line 15]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e224');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to diag in controller.listeners.add.AddProfToSubjListener.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e224" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class controller.listeners.add.AddProfToSubjListener<br/>In method controller.listeners.add.AddProfToSubjListener.mouseClicked(MouseEvent)<br/>Local variable named diag<br/>At AddProfToSubjListener.java:[line 23]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e241');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to $L2 in controller.listeners.add.AddStudListener.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e241" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class controller.listeners.add.AddStudListener<br/>In method controller.listeners.add.AddStudListener.mouseClicked(MouseEvent)<br/>Local variable stored in JVM register 2<br/>At AddStudListener.java:[line 14]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e258');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to ad in controller.listeners.add.AddStudentToSubjListener.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e258" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class controller.listeners.add.AddStudentToSubjListener<br/>In method controller.listeners.add.AddStudentToSubjListener.mouseClicked(MouseEvent)<br/>Local variable named ad<br/>At AddStudentToSubjListener.java:[line 23]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e275');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to $L2 in controller.listeners.add.AddSubjListener.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e275" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class controller.listeners.add.AddSubjListener<br/>In method controller.listeners.add.AddSubjListener.mouseClicked(MouseEvent)<br/>Local variable stored in JVM register 2<br/>At AddSubjListener.java:[line 16]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e292');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to $L2 in controller.listeners.edit.EditProfListener.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e292" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class controller.listeners.edit.EditProfListener<br/>In method controller.listeners.edit.EditProfListener.mouseClicked(MouseEvent)<br/>Local variable stored in JVM register 2<br/>At EditProfListener.java:[line 16]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e309');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to $L2 in controller.listeners.edit.EditStudListener.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e309" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class controller.listeners.edit.EditStudListener<br/>In method controller.listeners.edit.EditStudListener.mouseClicked(MouseEvent)<br/>Local variable stored in JVM register 2<br/>At EditStudListener.java:[line 14]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e326');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to $L2 in controller.listeners.edit.EditSubjListener.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e326" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class controller.listeners.edit.EditSubjListener<br/>In method controller.listeners.edit.EditSubjListener.mouseClicked(MouseEvent)<br/>Local variable stored in JVM register 2<br/>At EditSubjListener.java:[line 16]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e504');">
+            <td>
+               <span class="priority-3">DLS</span>
+            </td>
+            <td>Dead store to $L5 in model.BazaProfesori.deleteProfFromCertainSubj(Profesor, Predmet)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e504" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class model.BazaProfesori<br/>In method model.BazaProfesori.deleteProfFromCertainSubj(Profesor, Predmet)<br/>Local variable stored in JVM register 5<br/>At BazaProfesori.java:[line 218]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1407');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to odustanakPotvrda in new view.AddStudToSubjectFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1407" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class view.AddStudToSubjectFrame<br/>In method new view.AddStudToSubjectFrame()<br/>Local variable named odustanakPotvrda<br/>At AddStudToSubjectFrame.java:[line 60]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1689');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to $L2 in view.ButtonPredmeti.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1689" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class view.ButtonPredmeti<br/>In method view.ButtonPredmeti.mouseClicked(MouseEvent)<br/>Local variable stored in JVM register 2<br/>At ButtonPredmeti.java:[line 38]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1766');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to $L2 in view.ButtonPredmetiProfesora.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1766" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class view.ButtonPredmetiProfesora<br/>In method view.ButtonPredmetiProfesora.mouseClicked(MouseEvent)<br/>Local variable stored in JVM register 2<br/>At ButtonPredmetiProfesora.java:[line 47]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1844');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to $L2 in view.ButtonStudenti.mouseClicked(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1844" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class view.ButtonStudenti<br/>In method view.ButtonStudenti.mouseClicked(MouseEvent)<br/>Local variable stored in JVM register 2<br/>At ButtonStudenti.java:[line 65]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2609');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to c in new view.MainFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2609" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class view.MainFrame<br/>In method new view.MainFrame()<br/>Local variable named c<br/>At MainFrame.java:[line 62]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2738');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to hp in view.Menu$1.actionPerformed(ActionEvent)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2738" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class view.Menu$1<br/>In method view.Menu$1.actionPerformed(ActionEvent)<br/>Local variable named hp<br/>At Menu.java:[line 66]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2755');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to af in view.Menu$2.actionPerformed(ActionEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2755" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class view.Menu$2<br/>In method view.Menu$2.actionPerformed(ActionEvent)<br/>Local variable named af<br/>At Menu.java:[line 75]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3277');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to profPanel in new view.TabbedPane()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3277" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>In method new view.TabbedPane()<br/>Local variable named profPanel<br/>At TabbedPane.java:[line 37]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3294');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to studentPanel in new view.TabbedPane()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3294" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>In method new view.TabbedPane()<br/>Local variable named studentPanel<br/>At TabbedPane.java:[line 36]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3311');">
+            <td>
+               <span class="priority-1">DLS</span>
+            </td>
+            <td>Dead store to subjPanel in new view.TabbedPane()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3311" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>In method new view.TabbedPane()<br/>Local variable named subjPanel<br/>At TabbedPane.java:[line 38]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1395');">
+            <td>
+               <span class="priority-3">REC</span>
+            </td>
+            <td>Exception is caught when Exception is not thrown in new view.AddProfToSubjFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1395" style="display: none;">
+                  <a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+                  <br/>In class view.AddProfToSubjFrame<br/>In method new view.AddProfToSubjFrame()<br/>At AddProfToSubjFrame.java:[line 107]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1424');">
+            <td>
+               <span class="priority-3">REC</span>
+            </td>
+            <td>Exception is caught when Exception is not thrown in new view.AddStudToSubjectFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1424" style="display: none;">
+                  <a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+                  <br/>In class view.AddStudToSubjectFrame<br/>In method new view.AddStudToSubjectFrame()<br/>At AddStudToSubjectFrame.java:[line 168]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2100');">
+            <td>
+               <span class="priority-3">REC</span>
+            </td>
+            <td>Exception is caught when Exception is not thrown in new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2100" style="display: none;">
+                  <a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>At EditProfFrame.java:[line 321]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2319');">
+            <td>
+               <span class="priority-3">REC</span>
+            </td>
+            <td>Exception is caught when Exception is not thrown in new view.EditStudFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2319" style="display: none;">
+                  <a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+                  <br/>In class view.EditStudFrame<br/>In method new view.EditStudFrame()<br/>At EditStudFrame.java:[line 390]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2490');">
+            <td>
+               <span class="priority-3">REC</span>
+            </td>
+            <td>Exception is caught when Exception is not thrown in new view.EditSubjFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2490" style="display: none;">
+                  <a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+                  <br/>In class view.EditSubjFrame<br/>In method new view.EditSubjFrame()<br/>At EditSubjFrame.java:[line 264]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1220');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddProfFrame.adresaTF from instance method new view.AddProfFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1220" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>In method new view.AddProfFrame()<br/>Field view.AddProfFrame.adresaTF<br/>At AddProfFrame.java:[line 133]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1236');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddProfFrame.blkTF from instance method new view.AddProfFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1236" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>In method new view.AddProfFrame()<br/>Field view.AddProfFrame.blkTF<br/>At AddProfFrame.java:[line 158]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1252');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddProfFrame.datumTF from instance method new view.AddProfFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1252" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>In method new view.AddProfFrame()<br/>Field view.AddProfFrame.datumTF<br/>At AddProfFrame.java:[line 98]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1269');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddProfFrame.emailTF from instance method new view.AddProfFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1269" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>In method new view.AddProfFrame()<br/>Field view.AddProfFrame.emailTF<br/>At AddProfFrame.java:[line 121]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1285');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddProfFrame.imeTF from instance method new view.AddProfFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1285" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>In method new view.AddProfFrame()<br/>Field view.AddProfFrame.imeTF<br/>At AddProfFrame.java:[line 75]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1301');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddProfFrame.kancelarijaTF from instance method new view.AddProfFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1301" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>In method new view.AddProfFrame()<br/>Field view.AddProfFrame.kancelarijaTF<br/>At AddProfFrame.java:[line 146]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1317');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddProfFrame.prezimeTF from instance method new view.AddProfFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1317" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>In method new view.AddProfFrame()<br/>Field view.AddProfFrame.prezimeTF<br/>At AddProfFrame.java:[line 87]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1333');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddProfFrame.telefonTF from instance method new view.AddProfFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1333" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddProfFrame<br/>In method new view.AddProfFrame()<br/>Field view.AddProfFrame.telefonTF<br/>At AddProfFrame.java:[line 110]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1349');">
+            <td>
+               <span class="priority-3">ST</span>
+            </td>
+            <td>Write to static field view.AddProfFrame.titula from instance method view.AddProfFrame$2.actionPerformed(ActionEvent)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1349" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddProfFrame$2<br/>In method view.AddProfFrame$2.actionPerformed(ActionEvent)<br/>Field view.AddProfFrame.titula<br/>At AddProfFrame.java:[line 239]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1365');">
+            <td>
+               <span class="priority-3">ST</span>
+            </td>
+            <td>Write to static field view.AddProfFrame.zvanje from instance method view.AddProfFrame$2.actionPerformed(ActionEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1365" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddProfFrame$2<br/>In method view.AddProfFrame$2.actionPerformed(ActionEvent)<br/>Field view.AddProfFrame.zvanje<br/>At AddProfFrame.java:[line 240]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1437');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudToSubjectFrame.subjPreIzmene from instance method new view.AddStudToSubjectFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1437" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudToSubjectFrame<br/>In method new view.AddStudToSubjectFrame()<br/>Field view.AddStudToSubjectFrame.subjPreIzmene<br/>At AddStudToSubjectFrame.java:[line 72]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1466');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudentFrame.adresaPolje from instance method new view.AddStudentFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1466" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>In method new view.AddStudentFrame()<br/>Field view.AddStudentFrame.adresaPolje<br/>At AddStudentFrame.java:[line 111]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1482');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudentFrame.datumRodjenjaPolje from instance method new view.AddStudentFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1482" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>In method new view.AddStudentFrame()<br/>Field view.AddStudentFrame.datumRodjenjaPolje<br/>At AddStudentFrame.java:[line 98]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1498');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudentFrame.datumUpisaPolje from instance method new view.AddStudentFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1498" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>In method new view.AddStudentFrame()<br/>Field view.AddStudentFrame.datumUpisaPolje<br/>At AddStudentFrame.java:[line 153]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1514');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudentFrame.emailPolje from instance method new view.AddStudentFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1514" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>In method new view.AddStudentFrame()<br/>Field view.AddStudentFrame.emailPolje<br/>At AddStudentFrame.java:[line 142]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1530');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudentFrame.imePolje from instance method new view.AddStudentFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1530" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>In method new view.AddStudentFrame()<br/>Field view.AddStudentFrame.imePolje<br/>At AddStudentFrame.java:[line 77]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1546');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudentFrame.indexPolje from instance method new view.AddStudentFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1546" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>In method new view.AddStudentFrame()<br/>Field view.AddStudentFrame.indexPolje<br/>At AddStudentFrame.java:[line 132]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1562');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudentFrame.potvrda from instance method new view.AddStudentFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1562" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>In method new view.AddStudentFrame()<br/>Field view.AddStudentFrame.potvrda<br/>At AddStudentFrame.java:[line 199]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1578');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudentFrame.prezimePolje from instance method new view.AddStudentFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1578" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>In method new view.AddStudentFrame()<br/>Field view.AddStudentFrame.prezimePolje<br/>At AddStudentFrame.java:[line 87]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1594');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudentFrame.prosekPolje from instance method new view.AddStudentFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1594" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>In method new view.AddStudentFrame()<br/>Field view.AddStudentFrame.prosekPolje<br/>At AddStudentFrame.java:[line 165]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1611');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddStudentFrame.telefonPolje from instance method new view.AddStudentFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1611" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddStudentFrame<br/>In method new view.AddStudentFrame()<br/>Field view.AddStudentFrame.telefonPolje<br/>At AddStudentFrame.java:[line 122]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1641');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddSubjFrame.npTF from instance method new view.AddSubjFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1641" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddSubjFrame<br/>In method new view.AddSubjFrame()<br/>Field view.AddSubjFrame.npTF<br/>At AddSubjFrame.java:[line 90]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1657');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddSubjFrame.profesorTF from instance method new view.AddSubjFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1657" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddSubjFrame<br/>In method new view.AddSubjFrame()<br/>Field view.AddSubjFrame.profesorTF<br/>At AddSubjFrame.java:[line 109]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1673');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.AddSubjFrame.spTF from instance method new view.AddSubjFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1673" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.AddSubjFrame<br/>In method new view.AddSubjFrame()<br/>Field view.AddSubjFrame.spTF<br/>At AddSubjFrame.java:[line 82]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2112');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.adresaTF from instance method new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2112" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>Field view.EditProfFrame.adresaTF<br/>At EditProfFrame.java:[line 134]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2128');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.blkTF from instance method new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2128" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>Field view.EditProfFrame.blkTF<br/>At EditProfFrame.java:[line 160]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2144');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.datumTF from instance method new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2144" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>Field view.EditProfFrame.datumTF<br/>At EditProfFrame.java:[line 98]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2160');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.emailTF from instance method new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2160" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>Field view.EditProfFrame.emailTF<br/>At EditProfFrame.java:[line 121]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2176');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.imeTF from instance method new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2176" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>Field view.EditProfFrame.imeTF<br/>At EditProfFrame.java:[line 73]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2192');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.kancelarijaTF from instance method new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2192" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>Field view.EditProfFrame.kancelarijaTF<br/>At EditProfFrame.java:[line 148]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2208');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.prezimeTF from instance method new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2208" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>Field view.EditProfFrame.prezimeTF<br/>At EditProfFrame.java:[line 86]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2224');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.telefonTF from instance method new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2224" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>Field view.EditProfFrame.telefonTF<br/>At EditProfFrame.java:[line 110]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2240');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.titula from instance method new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2240" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>Field view.EditProfFrame.titula<br/>At EditProfFrame.java:[line 293]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2256');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.zvanje from instance method new view.EditProfFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2256" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame<br/>In method new view.EditProfFrame()<br/>Field view.EditProfFrame.zvanje<br/>At EditProfFrame.java:[line 294]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2273');">
+            <td>
+               <span class="priority-3">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.titula from instance method view.EditProfFrame$2.actionPerformed(ActionEvent)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2273" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame$2<br/>In method view.EditProfFrame$2.actionPerformed(ActionEvent)<br/>Field view.EditProfFrame.titula<br/>At EditProfFrame.java:[line 233]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2289');">
+            <td>
+               <span class="priority-3">ST</span>
+            </td>
+            <td>Write to static field view.EditProfFrame.zvanje from instance method view.EditProfFrame$2.actionPerformed(ActionEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2289" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditProfFrame$2<br/>In method view.EditProfFrame$2.actionPerformed(ActionEvent)<br/>Field view.EditProfFrame.zvanje<br/>At EditProfFrame.java:[line 234]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2331');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditStudFrame.adresaPolje from instance method new view.EditStudFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2331" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditStudFrame<br/>In method new view.EditStudFrame()<br/>Field view.EditStudFrame.adresaPolje<br/>At EditStudFrame.java:[line 101]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2347');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditStudFrame.datumRodjenjaPolje from instance method new view.EditStudFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2347" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditStudFrame<br/>In method new view.EditStudFrame()<br/>Field view.EditStudFrame.datumRodjenjaPolje<br/>At EditStudFrame.java:[line 92]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2363');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditStudFrame.datumUpisaPolje from instance method new view.EditStudFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2363" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditStudFrame<br/>In method new view.EditStudFrame()<br/>Field view.EditStudFrame.datumUpisaPolje<br/>At EditStudFrame.java:[line 138]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2379');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditStudFrame.emailPolje from instance method new view.EditStudFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2379" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditStudFrame<br/>In method new view.EditStudFrame()<br/>Field view.EditStudFrame.emailPolje<br/>At EditStudFrame.java:[line 129]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2395');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditStudFrame.imePolje from instance method new view.EditStudFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2395" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditStudFrame<br/>In method new view.EditStudFrame()<br/>Field view.EditStudFrame.imePolje<br/>At EditStudFrame.java:[line 74]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2411');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditStudFrame.indexPolje from instance method new view.EditStudFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2411" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditStudFrame<br/>In method new view.EditStudFrame()<br/>Field view.EditStudFrame.indexPolje<br/>At EditStudFrame.java:[line 119]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2427');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditStudFrame.prezimePolje from instance method new view.EditStudFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2427" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditStudFrame<br/>In method new view.EditStudFrame()<br/>Field view.EditStudFrame.prezimePolje<br/>At EditStudFrame.java:[line 83]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2444');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditStudFrame.prosekPolje from instance method new view.EditStudFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2444" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditStudFrame<br/>In method new view.EditStudFrame()<br/>Field view.EditStudFrame.prosekPolje<br/>At EditStudFrame.java:[line 148]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2460');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditStudFrame.telefonPolje from instance method new view.EditStudFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2460" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditStudFrame<br/>In method new view.EditStudFrame()<br/>Field view.EditStudFrame.telefonPolje<br/>At EditStudFrame.java:[line 110]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2502');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditSubjFrame.godina from instance method new view.EditSubjFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2502" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditSubjFrame<br/>In method new view.EditSubjFrame()<br/>Field view.EditSubjFrame.godina<br/>At EditSubjFrame.java:[line 119]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2518');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditSubjFrame.npTF from instance method new view.EditSubjFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2518" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditSubjFrame<br/>In method new view.EditSubjFrame()<br/>Field view.EditSubjFrame.npTF<br/>At EditSubjFrame.java:[line 91]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2534');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditSubjFrame.semestar from instance method new view.EditSubjFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2534" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditSubjFrame<br/>In method new view.EditSubjFrame()<br/>Field view.EditSubjFrame.semestar<br/>At EditSubjFrame.java:[line 118]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2550');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditSubjFrame.spTF from instance method new view.EditSubjFrame()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2550" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditSubjFrame<br/>In method new view.EditSubjFrame()<br/>Field view.EditSubjFrame.spTF<br/>At EditSubjFrame.java:[line 85]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2566');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.EditSubjFrame.stNaPredmetu from instance method new view.EditSubjFrame()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2566" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.EditSubjFrame<br/>In method new view.EditSubjFrame()<br/>Field view.EditSubjFrame.stNaPredmetu<br/>At EditSubjFrame.java:[line 120]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2884');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field view.PredmetiJTable.selektovanRed from instance method view.PredmetiJTable.prepareRenderer(TableCellRenderer, int, int)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2884" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.PredmetiJTable<br/>In method view.PredmetiJTable.prepareRenderer(TableCellRenderer, int, int)<br/>Field view.PredmetiJTable.selektovanRed<br/>At PredmetiJTable.java:[line 59]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2900');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.PredmetiJTable.model from instance method new view.PredmetiJTable()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2900" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.PredmetiJTable<br/>In method new view.PredmetiJTable()<br/>Field view.PredmetiJTable.model<br/>At PredmetiJTable.java:[line 36]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2916');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.PredmetiJTable.tabela from instance method new view.PredmetiJTable()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2916" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.PredmetiJTable<br/>In method new view.PredmetiJTable()<br/>Field view.PredmetiJTable.tabela<br/>At PredmetiJTable.java:[line 35]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2932');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.PredmetiJTable.selektovanRed from instance method view.PredmetiJTable$1.mouseReleased(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2932" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.PredmetiJTable$1<br/>In method view.PredmetiJTable$1.mouseReleased(MouseEvent)<br/>Field view.PredmetiJTable.selektovanRed<br/>At PredmetiJTable.java:[line 44]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3048');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field view.ProfesoriJTable.selektovanRed from instance method view.ProfesoriJTable.prepareRenderer(TableCellRenderer, int, int)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3048" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.ProfesoriJTable<br/>In method view.ProfesoriJTable.prepareRenderer(TableCellRenderer, int, int)<br/>Field view.ProfesoriJTable.selektovanRed<br/>At ProfesoriJTable.java:[line 64]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3064');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.ProfesoriJTable.model from instance method new view.ProfesoriJTable()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3064" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.ProfesoriJTable<br/>In method new view.ProfesoriJTable()<br/>Field view.ProfesoriJTable.model<br/>At ProfesoriJTable.java:[line 43]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3080');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.ProfesoriJTable.tabela from instance method new view.ProfesoriJTable()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3080" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.ProfesoriJTable<br/>In method new view.ProfesoriJTable()<br/>Field view.ProfesoriJTable.tabela<br/>At ProfesoriJTable.java:[line 42]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3096');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.ProfesoriJTable.selektovanRed from instance method view.ProfesoriJTable$1.mouseReleased(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3096" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.ProfesoriJTable$1<br/>In method view.ProfesoriJTable$1.mouseReleased(MouseEvent)<br/>Field view.ProfesoriJTable.selektovanRed<br/>At ProfesoriJTable.java:[line 51]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3212');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field view.StudentiJTable.selektovanRed from instance method view.StudentiJTable.prepareRenderer(TableCellRenderer, int, int)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3212" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.StudentiJTable<br/>In method view.StudentiJTable.prepareRenderer(TableCellRenderer, int, int)<br/>Field view.StudentiJTable.selektovanRed<br/>At StudentiJTable.java:[line 67]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3228');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.StudentiJTable.model from instance method new view.StudentiJTable()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3228" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.StudentiJTable<br/>In method new view.StudentiJTable()<br/>Field view.StudentiJTable.model<br/>At StudentiJTable.java:[line 45]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3244');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.StudentiJTable.tabela from instance method new view.StudentiJTable()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3244" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.StudentiJTable<br/>In method new view.StudentiJTable()<br/>Field view.StudentiJTable.tabela<br/>At StudentiJTable.java:[line 44]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3260');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field view.StudentiJTable.selektovanRed from instance method view.StudentiJTable$1.mouseReleased(MouseEvent)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3260" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.StudentiJTable$1<br/>In method view.StudentiJTable$1.mouseReleased(MouseEvent)<br/>Field view.StudentiJTable.selektovanRed<br/>At StudentiJTable.java:[line 53]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3387');">
+            <td>
+               <span class="priority-3">ST</span>
+            </td>
+            <td>Write to static field view.TabbedPane.tabelaPredmeti from instance method new view.TabbedPane()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3387" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>In method new view.TabbedPane()<br/>Field view.TabbedPane.tabelaPredmeti<br/>At TabbedPane.java:[line 40]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3403');">
+            <td>
+               <span class="priority-3">ST</span>
+            </td>
+            <td>Write to static field view.TabbedPane.tabelaProfesori from instance method new view.TabbedPane()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3403" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>In method new view.TabbedPane()<br/>Field view.TabbedPane.tabelaProfesori<br/>At TabbedPane.java:[line 43]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e3419');">
+            <td>
+               <span class="priority-3">ST</span>
+            </td>
+            <td>Write to static field view.TabbedPane.tabelaStudenti from instance method new view.TabbedPane()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e3419" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>In method new view.TabbedPane()<br/>Field view.TabbedPane.tabelaStudenti<br/>At TabbedPane.java:[line 46]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e1381');">
+            <td>
+               <span class="priority-2">UC</span>
+            </td>
+            <td>Useless condition: it's known that mesec == 11 at this point</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e1381" style="display: none;">
+                  <a href="#UC_USELESS_CONDITION">Bug type UC_USELESS_CONDITION (click for details)</a>
+                  <br/>In class view.AddProfFrame$2<br/>In method view.AddProfFrame$2.proveriDatum(String)<br/>Value mesec == 11<br/>At AddProfFrame.java:[line 277]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e1627');">
+            <td>
+               <span class="priority-2">UC</span>
+            </td>
+            <td>Useless condition: it's known that mesec == 11 at this point</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e1627" style="display: none;">
+                  <a href="#UC_USELESS_CONDITION">Bug type UC_USELESS_CONDITION (click for details)</a>
+                  <br/>In class view.AddStudentFrame$2<br/>In method view.AddStudentFrame$2.proveriDatum(String)<br/>Value mesec == 11<br/>At AddStudentFrame.java:[line 333]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e2305');">
+            <td>
+               <span class="priority-2">UC</span>
+            </td>
+            <td>Useless condition: it's known that mesec == 11 at this point</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e2305" style="display: none;">
+                  <a href="#UC_USELESS_CONDITION">Bug type UC_USELESS_CONDITION (click for details)</a>
+                  <br/>In class view.EditProfFrame$2<br/>In method view.EditProfFrame$2.proveriDatum(String)<br/>Value mesec == 11<br/>At EditProfFrame.java:[line 273]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d2e2476');">
+            <td>
+               <span class="priority-2">UC</span>
+            </td>
+            <td>Useless condition: it's known that mesec == 11 at this point</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d2e2476" style="display: none;">
+                  <a href="#UC_USELESS_CONDITION">Bug type UC_USELESS_CONDITION (click for details)</a>
+                  <br/>In class view.EditStudFrame$2<br/>In method view.EditStudFrame$2.proveriDatum(String)<br/>Value mesec == 11<br/>At EditStudFrame.java:[line 350]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d2e3435');">
+            <td>
+               <span class="priority-3">UwF</span>
+            </td>
+            <td>Unwritten public or protected field: view.TabbedPane.stanje</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d2e3435" style="display: none;">
+                  <a href="#UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD">Bug type UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD (click for details)</a>
+                  <br/>In class view.TabbedPane<br/>Field view.TabbedPane.stanje<br/>At TabbedPane.java:[line 63]</p>
+            </td>
+         </tr>
+      </table>
+      <h1>
+         <a name="Details">Details</a>
+      </h1>
+      <h2>
+         <a name="DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE: Dead store to local variable</a>
+      </h2>
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables. Because SpotBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    <h2>
+         <a name="DM_EXIT">DM_EXIT: Method invokes System.exit(...)</a>
+      </h2>
+
+  <p> Invoking System.exit shuts down the entire Java virtual machine. This
+   should only been done when it is appropriate. Such calls make it
+   hard or impossible for your code to be invoked by other code.
+   Consider throwing a RuntimeException instead.</p>
+
+    <h2>
+         <a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
+      </h2>
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion,
+and will assume that the default platform encoding is suitable. This will cause the application
+behavior to vary between platforms. Use an alternative API and specify a charset name or Charset
+object explicitly.</p>
+
+      <h2>
+         <a name="EC_UNRELATED_TYPES">EC_UNRELATED_TYPES: Call to equals() comparing different types</a>
+      </h2>
+
+<p> This method calls equals(Object) on two references of different
+class types and analysis suggests they will be to objects of different classes
+at runtime. Further, examination of the equals methods that would be invoked suggest that either
+this call will always return false, or else the equals method is not be symmetric (which is
+a property required by the contract
+for equals in class Object).
+</p>
+
+    <h2>
+         <a name="EI_EXPOSE_REP">EI_EXPOSE_REP: May expose internal representation by returning reference to mutable object</a>
+      </h2>
+
+  <p> Returning a reference to a mutable object value stored in one of the object's fields
+  exposes the internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Returning a new copy of the object is better approach in many situations.</p>
+
+    <h2>
+         <a name="EI_EXPOSE_REP2">EI_EXPOSE_REP2: May expose internal representation by incorporating reference to mutable object</a>
+      </h2>
+
+  <p> This code stores a reference to an externally mutable object into the
+  internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Storing a copy of the object is better approach in many situations.</p>
+
+    <h2>
+         <a name="LI_LAZY_INIT_STATIC">LI_LAZY_INIT_STATIC: Incorrect lazy initialization of static field</a>
+      </h2>
+
+<p> This method contains an unsynchronized lazy initialization of a non-volatile static field.
+Because the compiler or processor may reorder instructions,
+threads are not guaranteed to see a completely initialized object,
+<em>if the method can be called by multiple threads</em>.
+You can make the field volatile to correct the problem.
+For more information, see the
+<a href="http://www.cs.umd.edu/~pugh/java/memoryModel/">Java Memory Model web site</a>.
+</p>
+
+    <h2>
+         <a name="MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR">MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR: An overridable method is called from a constructor</a>
+      </h2>
+      <p>
+      Calling an overridable method during in a constructor may result in the use of uninitialized data. It may also
+      leak the this reference of the partially constructed object. Only static, final or private methods should be
+      invoked from a constructor.</p>
+      <p>
+      See SEI CERT rule <a href="https://wiki.sei.cmu.edu/confluence/display/java/MET05-J.+Ensure+that+constructors+do+not+call+overridable+methods">MET05-J. Ensure that constructors do not call overridable methods</a>.
+      </p>
+    <h2>
+         <a name="MS_SHOULD_BE_FINAL">MS_SHOULD_BE_FINAL: Field isn't final but should be</a>
+      </h2>
+
+   <p>
+This static field public but not final, and
+could be changed by malicious code or
+        by accident from another package.
+        The field could be made final to avoid
+        this vulnerability.</p>
+
+    <h2>
+         <a name="MS_PKGPROTECT">MS_PKGPROTECT: Field should be package protected</a>
+      </h2>
+
+  <p> A mutable static field could be changed by malicious code or
+   by accident.
+   The field could be made package protected to avoid
+   this vulnerability.</p>
+
+    <h2>
+         <a name="MS_EXPOSE_REP">MS_EXPOSE_REP: Public static method may expose internal representation by returning array</a>
+      </h2>
+
+  <p> A public static method returns a reference to
+   an array that is part of the static state of the class.
+   Any code that calls this method can freely modify
+   the underlying array.
+   One fix is to return a copy of the array.</p>
+
+    <h2>
+         <a name="NP_NULL_ON_SOME_PATH_EXCEPTION">NP_NULL_ON_SOME_PATH_EXCEPTION: Possible null pointer dereference in method on exception path</a>
+      </h2>
+
+<p> A reference value which is null on some exception control path is
+dereferenced here.&nbsp; This may lead to a <code>NullPointerException</code>
+when the code is executed.&nbsp;
+Note that because SpotBugs currently does not prune infeasible exception paths,
+this may be a false warning.</p>
+
+<p> Also note that SpotBugs considers the default case of a switch statement to
+be an exception path, since the default case is often infeasible.</p>
+
+    <h2>
+         <a name="OS_OPEN_STREAM_EXCEPTION_PATH">OS_OPEN_STREAM_EXCEPTION_PATH: Method may fail to close stream on exception</a>
+      </h2>
+
+<p> The method creates an IO stream object, does not assign it to any
+fields, pass it to other methods, or return it, and does not appear to close
+it on all possible exception paths out of the method.&nbsp;
+This may result in a file descriptor leak.&nbsp; It is generally a good
+idea to use a <code>finally</code> block to ensure that streams are
+closed.</p>
+
+    <h2>
+         <a name="REC_CATCH_EXCEPTION">REC_CATCH_EXCEPTION: Exception is caught when Exception is not thrown</a>
+      </h2>
+  
+  <p>
+  This method uses a try-catch block that catches Exception objects, but Exception is not
+  thrown within the try block, and RuntimeException is not explicitly caught.  It is a common bug pattern to
+  say try { ... } catch (Exception e) { something } as a shorthand for catching a number of types of exception
+  each of whose catch blocks is identical, but this construct also accidentally catches RuntimeException as well,
+  masking potential bugs.
+  </p>
+  <p>A better approach is to either explicitly catch the specific exceptions that are thrown,
+  or to explicitly catch RuntimeException exception, rethrow it, and then catch all non-Runtime Exceptions, as shown below:</p>
+<pre><code>try {
+    ...
+} catch (RuntimeException e) {
+    throw e;
+} catch (Exception e) {
+    ... deal with all non-runtime exceptions ...
+}
+</code></pre>
+  
+     <h2>
+         <a name="SC_START_IN_CTOR">SC_START_IN_CTOR: Constructor invokes Thread.start()</a>
+      </h2>
+
+  <p> The constructor starts a thread. This is likely to be wrong if
+   the class is ever extended/subclassed, since the thread will be started
+   before the subclass constructor is started.</p>
+
+    <h2>
+         <a name="SIC_INNER_SHOULD_BE_STATIC_ANON">SIC_INNER_SHOULD_BE_STATIC_ANON: Could be refactored into a named static inner class</a>
+      </h2>
+
+  <p> This class is an inner class, but does not use its embedded reference
+  to the object which created it.&nbsp; This reference makes the instances
+  of the class larger, and may keep the reference to the creator object
+  alive longer than necessary.&nbsp; If possible, the class should be
+  made into a <em>static</em> inner class. Since anonymous inner
+classes cannot be marked as static, doing this will require refactoring
+the inner class so that it is a named inner class.</p>
+
+    <h2>
+         <a name="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD: Write to static field from instance method</a>
+      </h2>
+
+  <p> This instance method writes to a static field. This is tricky to get
+correct if multiple instances are being manipulated,
+and generally bad practice.
+</p>
+
+    <h2>
+         <a name="UC_USELESS_CONDITION">UC_USELESS_CONDITION: Condition has no effect</a>
+      </h2>
+
+<p>This condition always produces the same result as the value of the involved variable that was narrowed before.
+Probably something else was meant or the condition can be removed.</p>
+
+    <h2>
+         <a name="URF_UNREAD_FIELD">URF_UNREAD_FIELD: Unread field</a>
+      </h2>
+
+  <p> This field is never read.&nbsp; Consider removing it from the class.</p>
+
+    <h2>
+         <a name="UUF_UNUSED_FIELD">UUF_UNUSED_FIELD: Unused field</a>
+      </h2>
+
+  <p> This field is never used.&nbsp; Consider removing it from the class.</p>
+
+    <h2>
+         <a name="UWF_UNWRITTEN_FIELD">UWF_UNWRITTEN_FIELD: Unwritten field</a>
+      </h2>
+
+  <p> This field is never written.&nbsp; All reads of it will return the default
+value. Check for errors (should it have been initialized?), or remove it if it is useless.</p>
+
+    <h2>
+         <a name="UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD">UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD: Unwritten public or protected field</a>
+      </h2>
+
+  <p> No writes were seen to this public/protected field.&nbsp; All reads of it will return the default
+value. Check for errors (should it have been initialized?), or remove it if it is useless.</p>
+
+    <h2>
+         <a name="WMI_WRONG_MAP_ITERATOR">WMI_WRONG_MAP_ITERATOR: Inefficient use of keySet iterator instead of entrySet iterator</a>
+      </h2>
+
+<p> This method accesses the value of a Map entry, using a key that was retrieved from
+a keySet iterator. It is more efficient to use an iterator on the entrySet of the map, to avoid the
+Map.get(key) lookup.</p>
+
+        </body>
+</html>
