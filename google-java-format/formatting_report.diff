@@ -1,0 +1,96 @@
+diff -ruN ./src_backup/view/AbstractTableModelStudenti.java ./src/view/AbstractTableModelStudenti.java
+--- ./src_backup/view/AbstractTableModelStudenti.java	2024-08-14 02:33:09.436864276 +0200
++++ ./src/view/AbstractTableModelStudenti.java	2024-08-14 02:33:11.792981123 +0200
+@@ -1,6 +1,5 @@
+ package view;
+ 
+-
+ import javax.swing.JButton;
+ import javax.swing.table.AbstractTableModel;
+ import model.BazaStudenata;
+diff -ruN ./src_backup/view/AddProfFrame.java ./src/view/AddProfFrame.java
+--- ./src_backup/view/AddProfFrame.java	2024-08-14 02:33:09.436864276 +0200
++++ ./src/view/AddProfFrame.java	2024-08-14 02:33:11.796981321 +0200
+@@ -291,8 +291,13 @@
+                   if (dan > 29) {
+                     return false;
+                   }
+-                } else if (mesec == 1 || mesec == 3 || mesec == 5 || mesec == 7 || mesec == 8
+-                    || mesec == 10 || mesec == 12) {
++                } else if (mesec == 1
++                    || mesec == 3
++                    || mesec == 5
++                    || mesec == 7
++                    || mesec == 8
++                    || mesec == 10
++                    || mesec == 12) {
+                   if (dan > 31) {
+                     return false;
+                   }
+diff -ruN ./src_backup/view/AddStudentFrame.java ./src/view/AddStudentFrame.java
+--- ./src_backup/view/AddStudentFrame.java	2024-08-14 02:33:09.436864276 +0200
++++ ./src/view/AddStudentFrame.java	2024-08-14 02:33:11.796981321 +0200
+@@ -361,8 +361,13 @@
+                   if (dan > 29) {
+                     return false;
+                   }
+-                } else if (mesec == 1 || mesec == 3 || mesec == 5 || mesec == 7 || mesec == 8
+-                    || mesec == 10 || mesec == 12) {
++                } else if (mesec == 1
++                    || mesec == 3
++                    || mesec == 5
++                    || mesec == 7
++                    || mesec == 8
++                    || mesec == 10
++                    || mesec == 12) {
+                   if (dan > 31) {
+                     return false;
+                   }
+diff -ruN ./src_backup/view/EditProfFrame.java ./src/view/EditProfFrame.java
+--- ./src_backup/view/EditProfFrame.java	2024-08-14 02:33:09.436864276 +0200
++++ ./src/view/EditProfFrame.java	2024-08-14 02:33:11.796981321 +0200
+@@ -284,8 +284,13 @@
+                     if (dan > 29) {
+                       return false;
+                     }
+-                  } else if (mesec == 1 || mesec == 3 || mesec == 5 || mesec == 7 || mesec == 8
+-                      || mesec == 10 || mesec == 12) {
++                  } else if (mesec == 1
++                      || mesec == 3
++                      || mesec == 5
++                      || mesec == 7
++                      || mesec == 8
++                      || mesec == 10
++                      || mesec == 12) {
+                     if (dan > 31) {
+                       return false;
+                     }
+diff -ruN ./src_backup/view/EditStudFrame.java ./src/view/EditStudFrame.java
+--- ./src_backup/view/EditStudFrame.java	2024-08-14 02:33:09.436864276 +0200
++++ ./src/view/EditStudFrame.java	2024-08-14 02:33:11.800981520 +0200
+@@ -370,8 +370,13 @@
+                     if (dan > 29) {
+                       return false;
+                     }
+-                  } else if (mesec == 1 || mesec == 3 || mesec == 5 || mesec == 7 || mesec == 8
+-                      || mesec == 10 || mesec == 12) {
++                  } else if (mesec == 1
++                      || mesec == 3
++                      || mesec == 5
++                      || mesec == 7
++                      || mesec == 8
++                      || mesec == 10
++                      || mesec == 12) {
+                     if (dan > 31) {
+                       return false;
+                     }
+diff -ruN ./src_backup/view/TabbedPane.java ./src/view/TabbedPane.java
+--- ./src_backup/view/TabbedPane.java	2024-08-14 02:33:09.440864475 +0200
++++ ./src/view/TabbedPane.java	2024-08-14 02:33:11.800981520 +0200
+@@ -1,6 +1,5 @@
+ package view;
+ 
+-
+ import javax.swing.JPanel;
+ import javax.swing.JScrollPane;
+ import javax.swing.JTabbedPane;
