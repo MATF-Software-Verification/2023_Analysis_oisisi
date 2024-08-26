@@ -155,6 +155,9 @@ Pogledaćemo neke od Java Application stavki:
 jer ovo nije previše veliki niti zahtevan projekat. Vidimo da se dve niti aktivno bave izvršavanjem Java koda, dok druge niti ili nisu aktivne ili ne izvršavaju Java kod.
 Sugestija je da bi aplikacija mogla da bolje iskoristi raspoloživa jezgra povećanjem nivoa paralelizma.
 
+![](java-flight-recorder/pictures/threads1.png)
+
+
 - Od informacija još možemo videti da je većina niti koje je alat pratio u stvari iz grupe system, kao sto su GB niti.
 
 **2. Files IO, SOcket IO**
