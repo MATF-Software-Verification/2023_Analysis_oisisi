@@ -73,21 +73,27 @@ Pokretanjem `spot-bugs.sh` skripte, generisan je HTML izveštaj sa ukupno 220 up
 
 **Primeri grešaka**:
 
-1. **UUF_UNUSED_FIELD**:  Polje je deklarisano, ali se nigde ne koristi u kodu.
+1. **OS_OPEN_STREAM_EXCEPTION_PATH**:  Metoda možda neće zatvoriti otvoreni stream ako se dogodi exception.
+- Metoda `initPredmete()` u klasi `BazaPredmeta` otvara `java.io.Reader` u try-bloku, a zatvara ga u sledećem try-bloku.
+- Predlog: koristiti try-with-recources blok.
+
+![](spot-bugs/pictures/sb0.png)
+
+2. **UUF_UNUSED_FIELD**:  Polje je deklarisano, ali se nigde ne koristi u kodu.
 - Polje `studenti` u klasi `BazaPredmeta` se ne koristi.
 - Predlog: ukloniti polje.
 
 ![](spot-bugs/pictures/sb2.png)
 
 
-2. **EI_EXPOSE_REP**: Može se izložiti unutrašnja reprezentacija koda vraćanjem reference na mutabilni objekat.
+3. **EI_EXPOSE_REP**: Može se izložiti unutrašnja reprezentacija koda vraćanjem reference na mutabilni objekat.
 - Metoda `getPredmeti()` u klasi `BazaPredmeta` vraća referencu na mutabilni objekat.
 - Predlog: umesto da se vraća direktna referenca na interno polje, može se vratiti kopija tog polja (u zavisnosti od potreba programera)
 
 ![](spot-bugs/pictures/sb3.png)
 
 
-3. **UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD**: polje u klasi je deklarisano kao javno (public) ili zaštićeno (protected), ali se nikada ne menja tokom izvođenja programa pa ce sva čitanja sa tog polja će vratiti njegovu podrazumevanu vrednost
+4. **UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD**: polje u klasi je deklarisano kao javno (public) ili zaštićeno (protected), ali se nikada ne menja tokom izvođenja programa pa ce sva čitanja sa tog polja će vratiti njegovu podrazumevanu vrednost
 - Polje `stanje` u klasi `TabbedPane` nikada nije inicijalizovano.
 - Predlog: obezbediti inicijalizaciju polja ukoliko je potrebno, ili ga obrisati ukoliko se polje ne koristi.
 
