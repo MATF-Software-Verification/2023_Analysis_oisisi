@@ -40,7 +40,7 @@ Kreatori aplikacije:
 
 ## Prevodjenje i pokretanje projekta
 
-- Pre pokretanja u sam izmenila sve relativne putanje koje vode ka fajlovima iz `datoteke` foldera u apsolutne. Bez te izmene, aplikacija će vrlo verovatno javljati grešku koja ukazuje da je ova izmena potrebna.
+- Pre pokretanja sam izmenila sve relativne putanje koje vode ka fajlovima iz `datoteke` foldera u apsolutne. Bez te izmene, aplikacija će vrlo verovatno javljati grešku koja ukazuje da je ova izmena potrebna.
 - Pokretanje aplikacije:
 
 ```bash
