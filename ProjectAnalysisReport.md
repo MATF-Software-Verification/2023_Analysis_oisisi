@@ -158,7 +158,7 @@ Sugestija je da bi aplikacija mogla da bolje iskoristi raspoloživa jezgra pove�
 ![](java-flight-recorder/pictures/threads1.png)
 
 
-- Od informacija još možemo videti da je većina niti koje je alat pratio u stvari iz grupe system, kao sto su GB niti.
+- Od informacija još možemo videti da je većina niti koje je alat pratio u stvari iz grupe system, kao sto su GC niti.
 
 **2. Files IO, SOcket IO**
     - U ovom delu nema nekih značajnih informacija, jer ovaj projekat ne radi ni sa kakvom bazom, niti ima mrežnu aktivnost.
